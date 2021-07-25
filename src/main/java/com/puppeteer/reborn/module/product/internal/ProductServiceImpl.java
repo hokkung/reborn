@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Setter
@@ -41,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> get(String eId) {
         Product product = productRepository.findByEId(eId).orElse(null);
+        Product product2 = productRepository.findByExternalId(eId).orElse(null);
         List<Product> products2 = productRepository.findByName(eId);
         return products2.stream().map(ProductMapper.INSTANCE::toProductDTO).collect(Collectors.toList());
     }

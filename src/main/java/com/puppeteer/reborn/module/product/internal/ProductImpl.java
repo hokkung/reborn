@@ -5,17 +5,21 @@ import com.puppeteer.reborn.module.product.Product;
 import com.puppeteer.reborn.module.product.model.CreateProduct;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.Date;
-import java.util.UUID;
 
-@Document
+@Document(collection = "product")
 @Setter
 @Getter
 public class ProductImpl extends AbstractEntity<String> implements Product {
     private String name;
+    @Field("eId")
     private String eId;
+    @Indexed(unique = true)
+    private String externalId;
     private Double price;
     private Date createdTime;
 
@@ -34,6 +38,7 @@ public class ProductImpl extends AbstractEntity<String> implements Product {
         product.setName(req.getName());
         product.setPrice(req.getPrice());
         product.setEId(req.getEId());
+        product.setExternalId(req.getExternalId());
 
         return product;
     }

@@ -11,6 +11,8 @@ public class CreateProduct {
     private String name;
     @NotBlank
     private String eId;
+    @NotBlank
+    private String externalId;
     @NotNull
     private Double price;
 }

@@ -1,10 +1,11 @@
 package com.puppeteer.reborn.module.product;
 
 import com.puppeteer.reborn.framework.entity.Entity;
+import com.puppeteer.reborn.framework.entity.ExternalId;
 
 import java.util.Date;
 
-public interface Product extends Entity<String> {
+public interface Product extends Entity<String>, ExternalId {
     /**
      * Gets name.
      *
