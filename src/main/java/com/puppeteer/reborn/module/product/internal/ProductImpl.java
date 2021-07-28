@@ -30,6 +30,15 @@ public class ProductImpl extends AbstractEntity<String> implements Product {
     /**
      * Creates.
      *
+     * @return {@link ProductImpl}
+     */
+    public static ProductImpl create() {
+       return new ProductImpl();
+    }
+
+    /**
+     * Creates.
+     *
      * @param req req
      * @return {@link ProductImpl}
      */
